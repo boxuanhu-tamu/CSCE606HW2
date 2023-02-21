@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
+<%= form_tag movies_path, :method => 'get' do %>
+  <%= collection_select :movie, :rating, Movie.all.uniq{|movie| [movie.rating]}, :rating, :rating, prompt: true %>
+  <%= submit_tag "search" %>
+<% end %>
 
 <div id="movies">
   <% @movies.each do |movie| %>
